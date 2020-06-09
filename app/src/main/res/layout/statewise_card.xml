@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardState"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="start"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideline3"
+                android:layout_marginLeft="10dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staConText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/confirmed"
+                app:fontFamily="@font/product_regular"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/colorBlue"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/guideline1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staCon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlue"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/staConText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/guideline1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/deltaCon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                app:fontFamily="@font/product_regular"
+                android:textColor="@color/colorBlue"
+                app:layout_constraintRight_toLeftOf="@+id/guideline1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/staCon" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staActText"
+                android:textColor="@color/colorRed"
+                android:text="@string/active"
+                android:textSize="12sp"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3"
+                app:layout_constraintLeft_toRightOf="@id/guideline1"
+                app:layout_constraintRight_toLeftOf="@+id/guideline0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staAct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorRed"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/staActText"
+                app:layout_constraintLeft_toRightOf="@id/guideline1"
+                app:layout_constraintRight_toLeftOf="@id/guideline0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staRecText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/recovered"
+                app:fontFamily="@font/product_regular"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorGreen"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline5"
+                app:layout_constraintRight_toLeftOf="@id/guideline1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staRec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorGreen"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/staRecText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/guideline1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/deltaRec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/product_regular"
+                android:textColor="@color/colorGreen"
+                app:layout_constraintTop_toBottomOf="@id/staRec"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/guideline1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staDeadText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/deceased"
+                android:layout_marginTop="5dp"
+                app:fontFamily="@font/product_regular"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/colorYellow"
+                app:layout_constraintTop_toBottomOf="@id/guideline5"
+                app:layout_constraintLeft_toRightOf="@+id/guideline1"
+                app:layout_constraintRight_toLeftOf="@id/guideline0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/staDead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorYellow"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/staDeadText"
+                app:layout_constraintLeft_toRightOf="@id/guideline1"
+                app:layout_constraintRight_toLeftOf="@id/guideline0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/deltaDead"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/product_regular"
+                android:textColor="@color/colorYellow"
+                app:layout_constraintLeft_toRightOf="@id/guideline1"
+                app:layout_constraintRight_toLeftOf="@id/guideline0"
+                app:layout_constraintTop_toBottomOf="@id/staDead"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <com.razerdp.widget.animatedpieview.AnimatedPieView
+                android:id="@+id/aniGraph"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintLeft_toRightOf="@id/guideline0"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline3"
+                app:layout_constraintBottom_toTopOf="@id/guideline4"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lastUpdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/product_regular"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline4"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardState"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

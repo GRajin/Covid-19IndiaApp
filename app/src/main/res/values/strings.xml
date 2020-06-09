@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Covid 19 India</string>
+    <string name="loading">Loading…</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="active">Active</string>
+    <string name="recovered">Recovered</string>
+    <string name="deceased">Deceased</string>
+    <string name="state_wise">State Wise</string>
+    <string name="day_wise">Day Wise</string>
+    <string name="refresh">Refresh</string>
+    <string name="about">About</string>
+    <string name="click_on_the_card_to_view_district_wise">Click on the card to view more</string>
+    <string name="todo">TODO</string>
+    <string name="day">DAY</string>
+    <string name="total">TOTAL</string>
+    <string name="district_wise">District Wise</string>
+    <string name="rajin_gangadharan">Rajin Gangadharan</string>
+    <string name="thanks_to_covid19india_org">#StayHome #StaySafe</string>
+    <string name="covid19india">COVID19 INDIA</string>
+    <string name="crowdsourced_data_from_covid19india_org">crowdsourced data from covid19india.org</string>
+    <string name="click_here_to_show_district_wise_details">Click here to show district wise details</string>
+    <string name="test_per_lakh">Tests Per Lakh</string>
+    <string name="recover_rate">Recovery Rate</string>
+    <string name="mortality_rate">Mortality Rate</string>
+    <string name="confirmed_per_million">Confirmed Per Lakh</string>
+    <string name="top_5_district">Top 5 Districts</string>
+    <string name="last_five_days_report">Last 20 Days</string>
+    <string name="district">Districts</string>
+    <string name="loadingPleaseWait">Loading…</string>
+    <string name="search">Search</string>
+</resources>
