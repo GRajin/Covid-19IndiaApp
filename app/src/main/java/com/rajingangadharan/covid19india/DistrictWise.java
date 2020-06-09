@@ -8,8 +8,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import android.app.SearchManager;
-import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,6 +90,7 @@ public class DistrictWise extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,10 +115,20 @@ public class DistrictWise extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public boolean isConnected() {
-        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert manager != null;
-        return manager.getActiveNetworkInfo() != null && manager.getActiveNetworkInfo().isConnected();
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        if(connectivityManager != null) {
+            NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+            if(networkCapabilities != null) {
+                if(networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    return true;
+                } else if(networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    return true;
+                } else return networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET);
+            }
+        }
+        return false;
     }
 
     public void preFetch() {
