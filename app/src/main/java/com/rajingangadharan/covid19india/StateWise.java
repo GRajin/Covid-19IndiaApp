@@ -195,13 +195,13 @@ public class StateWise extends AppCompatActivity {
 
                         data = new StateWiseData(sta, staCode, con, act, rec, dead, lastUp, delCon, delRec, delDead);
                         stateWiseData.add(data);
-
-                        cardAdapter = new CardAdapter(stateWiseData);
-                        lstState.setAdapter(cardAdapter);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        txtProgress.setVisibility(View.INVISIBLE);
-                        txtShowDis.setVisibility(View.VISIBLE);
                     }
+
+                    cardAdapter = new CardAdapter(stateWiseData);
+                    lstState.setAdapter(cardAdapter);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    txtProgress.setVisibility(View.INVISIBLE);
+                    txtShowDis.setVisibility(View.VISIBLE);
                 }
                 Log.d("covid19India", "State -> Parsing JSON Ended");
             } catch ( JSONException | ParseException e ) {
@@ -299,7 +299,7 @@ public class StateWise extends AppCompatActivity {
             config.addData(new SimplePieInfo(Float.parseFloat(stateWiseDataArray.get(position).getStaDeceased()), ContextCompat.getColor(getApplicationContext(), R.color.colorYellow), "Dead"));
             config.canTouch(false);
             config.strokeMode(false);
-            config.duration(1000);
+            config.duration(0);
 
             ViewHolder.animatedPieView.applyConfig(config);
             ViewHolder.animatedPieView.start();

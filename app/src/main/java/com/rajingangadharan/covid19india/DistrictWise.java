@@ -193,6 +193,12 @@ public class DistrictWise extends AppCompatActivity {
                             cardAdapter = new CardAdapter(districtWiseData);
                             lstDis.setAdapter(cardAdapter);
                         }
+
+                        progressBar.setVisibility(View.INVISIBLE);
+                        txtLoad.setVisibility(View.INVISIBLE);
+
+                        cardAdapter = new CardAdapter(districtWiseData);
+                        lstDis.setAdapter(cardAdapter);
                     }
                 }
             } catch (Exception e) {
@@ -297,7 +303,7 @@ public class DistrictWise extends AppCompatActivity {
             config.addData(new SimplePieInfo(Float.parseFloat(districtWiseDataArrayList.get(position).getDisDead()), ContextCompat.getColor(getApplicationContext(), R.color.colorYellow), "Dead"));
             config.canTouch(false);
             config.strokeMode(false);
-            config.duration(1000);
+            config.duration(0);
 
             ViewHolder.animatedPieView.applyConfig(config);
             ViewHolder.animatedPieView.start();
