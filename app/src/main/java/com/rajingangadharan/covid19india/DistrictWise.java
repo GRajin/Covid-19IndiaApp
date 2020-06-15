@@ -180,10 +180,24 @@ public class DistrictWise extends AppCompatActivity {
                             String dead = districts.getString("deceased");
                             String recovered = districts.getString("recovered");
                             JSONObject delta = districts.getJSONObject("delta");
-                            String delCon = "\u2191" + delta.getString("confirmed");
-                            String delDead = "\u2191" + delta.getString("deceased");
-                            String delRec = "\u2191" + delta.getString("recovered");
-
+                            String delCon = "";
+                            if(delta.getInt("confirmed") >= 0) {
+                                delCon = "\u2191" + delta.getString("confirmed");
+                            } else if(delta.getInt("confirmed") < 0) {
+                                delCon = "\u2193" + Math.abs(delta.getInt("confirmed"));
+                            }
+                            String delRec = "";
+                            if(delta.getInt("recovered") >= 0) {
+                                delRec = "\u2191" + delta.getString("recovered");
+                            } else if(delta.getInt("recovered") < 0) {
+                                delRec = "\u2193" + Math.abs(delta.getInt("recovered"));
+                            }
+                            String delDead = "";
+                            if(delta.getInt("deceased") >= 0) {
+                                delDead = "\u2191" + delta.getString("deceased");
+                            } else if(delta.getInt("deceased") < 0) {
+                                delDead = "\u2193" + Math.abs(delta.getInt("deceased"));
+                            }
                             data = new DistrictWiseData(district, confirm, active, recovered, dead, delCon, delRec, delDead);
                             districtWiseData.add(data);
 
@@ -395,7 +409,7 @@ public class DistrictWise extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         Log.d("covid19India", "District -> Exit");
     }
 }

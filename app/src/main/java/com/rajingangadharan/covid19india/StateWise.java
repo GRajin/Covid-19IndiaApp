@@ -189,10 +189,24 @@ public class StateWise extends AppCompatActivity {
                         Date date = formatIn.parse(JO.getString("lastupdatedtime"));
                         assert date != null;
                         String lastUp = "Last Updated: " + formatOut.format(date);
-                        String delCon = "\u2191" + JO.getString("deltaconfirmed");
-                        String delRec = "\u2191" + JO.getString("deltarecovered");
-                        String delDead = "\u2191" + JO.getString("deltadeaths");
-
+                        String delCon = "";
+                        if(JO.getInt("deltaconfirmed") >= 0) {
+                            delCon = "\u2191" + JO.getString("deltaconfirmed");
+                        } else if(JO.getInt("deltaconfirmed") < 0) {
+                            delCon = "\u2193" + Math.abs(JO.getInt("deltaconfirmed"));
+                        }
+                        String delRec = "";
+                        if(JO.getInt("deltarecovered") >= 0) {
+                            delRec = "\u2191" + JO.getString("deltarecovered");
+                        } else if(JO.getInt("deltarecovered") < 0) {
+                            delRec = "\u2193" + Math.abs(JO.getInt("deltarecovered"));
+                        }
+                        String delDead = "";
+                        if(JO.getInt("deltadeaths") >= 0) {
+                            delDead = "\u2191" + JO.getString("deltadeaths");
+                        } else if(JO.getInt("deltadeaths") < 0) {
+                            delDead = "\u2193" + Math.abs(JO.getInt("deltadeaths"));
+                        }
                         data = new StateWiseData(sta, staCode, con, act, rec, dead, lastUp, delCon, delRec, delDead);
                         stateWiseData.add(data);
                     }

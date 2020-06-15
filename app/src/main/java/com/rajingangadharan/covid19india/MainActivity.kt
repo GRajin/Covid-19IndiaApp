@@ -7,13 +7,11 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -42,9 +40,9 @@ class MainActivity : AppCompatActivity() {
     private var recover: String? = null
     private var dead: String? = null
     private var update: String? = null
-    private var deltaCon: String? = null
-    private var deltaRec: String? = null
-    private var deltaDead: String? = null
+    private var deltaCon: Int? = null
+    private var deltaRec: Int? = null
+    private var deltaDead: Int? = null
     private var txtConfirm: MaterialTextView? = null
     private var txtActive: MaterialTextView? = null
     private var txtRecover: MaterialTextView? = null
@@ -56,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     private var txtProgress: MaterialTextView? = null
     private var pieView: AnimatedPieView? = null
     private var loadProgress: ProgressBar? = null
-    var requestQueue: RequestQueue? = null
+    private var requestQueue: RequestQueue? = null
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.refresh) {
@@ -163,9 +161,9 @@ class MainActivity : AppCompatActivity() {
         recover = ""
         dead = ""
         update = ""
-        deltaCon = ""
-        deltaRec = ""
-        deltaDead = ""
+        deltaCon = 0
+        deltaRec = 0
+        deltaDead = 0
         requestQueue = Volley.newRequestQueue(this)
         loadProgress?.visibility = View.VISIBLE
         txtProgress?.visibility = View.VISIBLE
@@ -186,9 +184,9 @@ class MainActivity : AppCompatActivity() {
                         val formatOut = SimpleDateFormat("dd/MM/yyyy hh:mm:ss aa", Locale.getDefault())
                         val date = formatIn.parse(jo.getString("lastupdatedtime"))!!
                         update = "Last Updated: " + formatOut.format(date)
-                        deltaCon = jo.getString("deltaconfirmed")
-                        deltaRec = jo.getString("deltarecovered")
-                        deltaDead = jo.getString("deltadeaths")
+                        deltaCon = jo.getInt("deltaconfirmed")
+                        deltaRec = jo.getInt("deltarecovered")
+                        deltaDead = jo.getInt("deltadeaths")
                         break
                     }
                 }
@@ -228,26 +226,41 @@ class MainActivity : AppCompatActivity() {
 
                 txtUpdate?.text = update
 
-                val animDeltaCon = deltaCon?.toInt()?.let { ValueAnimator.ofInt(0, it) }
+                val animDeltaCon = deltaCon?.let { ValueAnimator.ofInt(0, it) }
                 animDeltaCon?.duration = 1000
                 animDeltaCon?.addUpdateListener { animation: ValueAnimator ->
-                    val ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    var ani: String? = null
+                    if(animation.animatedValue.toString().toInt() >= 0) {
+                        ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    } else if(animation.animatedValue.toString().toInt() < 0) {
+                        ani = "\u2193" + decimalFormat.format(Math.abs(animation.animatedValue.toString().toInt().toLong()))
+                    }
                     txtDeltaCon?.text = ani
                 }
                 animDeltaCon?.start()
 
-                val animDeltaRec = deltaRec?.toInt()?.let { ValueAnimator.ofInt(0, it) }
+                val animDeltaRec = deltaRec?.let { ValueAnimator.ofInt(0, it) }
                 animDeltaRec?.duration = 1000
                 animDeltaRec?.addUpdateListener { animation: ValueAnimator ->
-                    val ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    var ani: String? = null
+                    if(animation.animatedValue.toString().toInt() >= 0) {
+                        ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    } else if(animation.animatedValue.toString().toInt() < 0) {
+                        ani = "\u2193" + decimalFormat.format(Math.abs(animation.animatedValue.toString().toInt().toLong()))
+                    }
                     txtDeltaRec?.text = ani
                 }
                 animDeltaRec?.start()
 
-                val animDeltaDead = deltaDead?.toInt()?.let { ValueAnimator.ofInt(0, it) }
+                val animDeltaDead = deltaDead?.let { ValueAnimator.ofInt(0, it) }
                 animDeltaDead?.duration = 1000
                 animDeltaDead?.addUpdateListener { animation: ValueAnimator ->
-                    val ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    var ani: String? = null
+                    if(animation.animatedValue.toString().toInt() >= 0) {
+                        ani = "\u2191" + decimalFormat.format(animation.animatedValue.toString().toInt().toLong())
+                    } else if(animation.animatedValue.toString().toInt() < 0) {
+                        ani = "\u2193" + decimalFormat.format(Math.abs(animation.animatedValue.toString().toInt().toLong()))
+                    }
                     txtDeltaDead?.text = ani
                 }
                 animDeltaDead?.start()
